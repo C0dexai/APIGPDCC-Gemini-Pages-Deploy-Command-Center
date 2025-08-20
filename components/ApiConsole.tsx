@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import BuildChart from './BuildChart';
 
@@ -149,6 +148,8 @@ export default function ApiConsole(): React.ReactNode {
     
     // V2 API Tester State
     const [postV2Prompt, setPostV2Prompt] = useState('Build a React todo app with Tailwind.');
+    const [apiName, setApiName] = useState('');
+    const [apiKey, setApiKey] = useState('');
     const [postV2Response, setPostV2Response] = useState<any>(null);
     const [postV2Payload, setPostV2Payload] = useState<any>(null);
     const [isV2Posting, setIsV2Posting] = useState(false);
@@ -164,7 +165,12 @@ export default function ApiConsole(): React.ReactNode {
 
     const handlePostV2 = async () => {
         setIsV2Posting(true);
-        const payload = { prompt: postV2Prompt, orchestrator: 'Maestro' };
+        const payload: any = { prompt: postV2Prompt, orchestrator: 'Maestro' };
+        if (apiName.trim() && apiKey.trim()) {
+            payload.environment = {
+                [apiName.trim()]: apiKey.trim(),
+            };
+        }
         setPostV2Payload(payload);
         const res: any = await mockV2ApiResponse(payload);
         setPostV2Response(res);
@@ -236,7 +242,22 @@ export default function ApiConsole(): React.ReactNode {
                             <label htmlFor="prompt" className={labelClasses}>Operator Prompt</label>
                             <textarea id="prompt" value={postV2Prompt} onChange={e => setPostV2Prompt(e.target.value)} className={`${inputClasses} font-mono text-sm`} rows={3}></textarea>
                         </div>
-                        <div className="mt-4">
+
+                        <h4 className="font-bold text-cyan-300 mt-6 mb-2 text-sm uppercase tracking-wider">Container Environment Variables (Optional)</h4>
+                        <p className="text-xs text-gray-400 mb-3">These will be injected into the container for inference tasks.</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label htmlFor="apiName" className={labelClasses}>Variable Name</label>
+                                <input id="apiName" type="text" value={apiName} onChange={e => setApiName(e.target.value)} className={`${inputClasses} font-mono`} placeholder="e.g., OPENAI_API_KEY" />
+                            </div>
+                            <div>
+                                <label htmlFor="apiKey" className={labelClasses}>Variable Value</label>
+                                <input id="apiKey" type="password" value={apiKey} onChange={e => setApiKey(e.target.value)} className={`${inputClasses} font-mono`} placeholder="Enter secret value" />
+                            </div>
+                        </div>
+
+                        <div className="mt-6">
                             <button onClick={handlePostV2} disabled={isV2Posting} className={buttonClasses}>
                                 {isV2Posting ? 'Initiating...' : 'Send Request'}
                             </button>
