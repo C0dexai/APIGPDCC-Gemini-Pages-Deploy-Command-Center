@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Pages Deploy v1 - API Specification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #22d3ee;
+            --neon-magenta: #f472b6;
+            --neon-lime: #a3e635;
+            --glow-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712; /* Fallback color */
+            background-image: url('https://images.unsplash.com/photo-1542648722-1b63489345e6?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: #e5e7eb;
+        }
+
+        .prose {
+            color: #d1d5db;
+        }
+
+        /* Override tailwind typography for a custom neon theme */
+        .prose-invert h1 {
+            color: white;
+            text-shadow: var(--glow-shadow);
+            font-weight: 900;
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .prose-invert h2 {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px var(--neon-cyan);
+            border-bottom: 1px solid var(--neon-cyan);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prose-invert h3 {
+            color: var(--neon-magenta);
+            text-shadow: 0 0 3px var(--neon-magenta);
+            margin-bottom: 1rem;
+        }
+
+        .prose-invert a {
+            color: var(--neon-lime);
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .prose-invert a:hover {
+            color: white;
+            text-shadow: 0 0 8px var(--neon-lime);
+        }
+        
+        .prose-invert strong {
+            color: var(--neon-magenta);
+        }
+        
+        .prose-invert hr {
+            border-color: #374151;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .prose-invert pre {
+            background-color: #00000099;
+            color: #e5e7eb;
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 10px #22d3ee55;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+
+        .prose-invert code {
+            color: var(--neon-lime);
+            font-family: 'Courier New', Courier, monospace;
+            word-wrap: break-word;
+        }
+        
+        .prose-invert pre code {
+            color: inherit;
+            background-color: transparent;
+            padding: 0;
+            font-size: inherit;
+        }
+        
+        .prose-invert ul > li::before {
+             background-color: var(--neon-cyan);
+        }
+        
+        .prose-invert code:not(pre > code) {
+            background-color: #ffffff1a;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.13.0",
+    "marked": "https://esm.sh/marked@^14.0.0"
+  }
+}
+</script>
+</head>
+<body class="antialiased">
+    <div id="root"></div>
+</body>
+</html>

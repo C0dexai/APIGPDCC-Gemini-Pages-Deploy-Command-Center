@@ -1,0 +1,6 @@
+{
+  "name": "APIGPDCC-Gemini Pages Deploy Command Center",
+  "description": "An interactive command center to test and explore the Gemini Pages Deploy API. Includes the full API specification and an inference console for hands-on endpoint testing.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
